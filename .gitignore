@@ -1,0 +1,41 @@
+# Dependency directories
+node_modules/
+
+# Build output
+dist/
+
+tempdocs
+
+# Environment variables
+.env
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Workspace directories
+workspaces/
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Test coverage
+coverage/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+workspaces
+
+**/.claude/settings.local.json
+
+.env.secret-agents
+
+# Edge config
+.edge-config.json
+
+CLAUDE.local.md

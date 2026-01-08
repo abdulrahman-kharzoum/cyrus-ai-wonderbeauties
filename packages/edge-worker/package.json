@@ -1,0 +1,54 @@
+{
+	"name": "cyrus-edge-worker",
+	"version": "0.2.8",
+	"description": "Unified edge worker for processing Linear issues with Claude",
+	"type": "module",
+	"main": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"prompt-template-v2.md",
+		"prompt-template.md",
+		"label-prompt-template.md",
+		"prompts"
+	],
+	"scripts": {
+		"build": "tsc && pnpm run copy-prompts",
+
+		"copy-prompts": "node -e \"const fs = require('fs'); const path = require('path'); const srcDir = 'src/prompts/subroutines'; const destDir = 'dist/prompts/subroutines'; if (!fs.existsSync(destDir)){ fs.mkdirSync(destDir, { recursive: true }); } if (fs.existsSync(srcDir)) { fs.readdirSync(srcDir).forEach(file => { if (file.endsWith('.md')) fs.copyFileSync(path.join(srcDir, file), path.join(destDir, file)); }); }\"",
+		"dev": "tsc --watch",
+		"test": "vitest",
+		"test:run": "vitest run",
+		"test:watch": "vitest --watch",
+		"test:coverage": "vitest --coverage",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@linear/sdk": "^64.0.0",
+		"@ngrok/ngrok": "^1.5.1",
+		"chokidar": "^4.0.3",
+		"cyrus-claude-runner": "workspace:*",
+		"cyrus-cloudflare-tunnel-client": "workspace:*",
+		"cyrus-config-updater": "workspace:*",
+		"cyrus-core": "workspace:*",
+		"cyrus-gemini-runner": "workspace:*",
+		"cyrus-linear-event-transport": "workspace:*",
+		"cyrus-simple-agent-runner": "workspace:*",
+		"cyrus-zhipu-runner": "workspace:*",
+		"fastify": "^5.2.0",
+		"file-type": "^18.7.0",
+		"zod": "3.24.1",
+		"zod-to-json-schema": "3.24.1"
+	},
+	"devDependencies": {
+		"@types/node": "^20.0.0",
+		"@vitest/coverage-v8": "^1.6.1",
+		"axios": "^1.6.0",
+		"typescript": "^5.3.3",
+		"vitest": "^1.1.0",
+		"vitest-mock-extended": "^3.1.0"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
