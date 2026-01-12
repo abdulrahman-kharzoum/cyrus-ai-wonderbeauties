@@ -2736,6 +2736,8 @@ export class EdgeWorker extends EventEmitter {
 			"builder",
 			"scoper",
 			"orchestrator",
+			"n8n",
+			"supabase",
 		] as const;
 
 		for (const promptType of promptTypes) {
